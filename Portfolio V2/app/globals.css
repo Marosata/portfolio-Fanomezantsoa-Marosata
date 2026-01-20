@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background-dark text-gray-100 antialiased font-sans text-[15px];
+}
+
+/* Classe utilitaire pour les petits textes avec Poppins */
+.text-small {
+  @apply font-poppins;
+}
+
+.glass-dark {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.glass-light {
+  @apply bg-black/5 backdrop-blur-lg border border-black/10;
+}
+
+/* Effet matrix animé en arrière-plan */
+.fx-matrix {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+.dark .fx-matrix {
+  opacity: 0.22;
+  mix-blend-mode: lighten;
+}
+
+.fx-matrix-layer {
+  position: relative;
+  width: 200%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.fx-matrix-column {
+  position: absolute;
+  top: -110%;
+  width: 18px;
+  height: 210%;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  animation-name: matrix-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  white-space: nowrap;
+}
+
+.fx-matrix-column::before {
+  content: "M4R0S4T4_01NEXTJS_ANGULAR_LARAVEL_FLUTTER_TYPESCRIPT_POSTGRESQL_AWS";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(59, 130, 246, 0.95) 0%,
+    rgba(59, 130, 246, 0.85) 10%,
+    rgba(59, 130, 246, 0.75) 20%,
+    rgba(139, 92, 246, 0.7) 40%,
+    rgba(139, 92, 246, 0.6) 65%,
+    rgba(79, 70, 229, 0.5) 70%,
+    rgba(30, 58, 138, 0.4) 95%,
+    rgba(15, 23, 42, 0.2) 100%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  writing-mode: vertical-lr;
+  letter-spacing: 1px;
+}
+
+.dark .fx-matrix-column::before {
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #a5b4fc 8%,
+    #3b82f6 18%,
+    #3b82f6 30%,
+    #8b5cf6 45%,
+    #a855f7 60%,
+    rgba(15, 23, 42, 0.3) 85%,
+    transparent 100%
+  );
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+}
+
+/* Blobs animés dans les cartes */
+.fx-card-blob {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 160px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 20%, #3b82f6, #8b5cf6);
+  opacity: 0.45;
+  filter: blur(18px);
+  transform: translate(-100%, -100%);
+  animation: blob-bounce 14s ease-in-out infinite;
+}
+
+.dark .fx-card-blob {
+  opacity: 0.55;
+  background: radial-gradient(circle at 30% 20%, #3b82f6, #22c55e);
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-120%, -120%) translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-80%, -120%) translate3d(90%, 0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-80%, -80%) translate3d(90%, 90%, 0) scale(0.95);
+  }
+  75% {
+    transform: translate(-120%, -80%) translate3d(0, 90%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate(-120%, -120%) translate3d(0, 0, 0) scale(1);
+  }
+}
+
+
