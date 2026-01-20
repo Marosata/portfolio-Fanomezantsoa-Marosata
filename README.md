@@ -16,7 +16,7 @@ The portfolio is developed using **Next.js**, following modern best practices in
 - **Styling**: CSS / Tailwind CSS (if applicable)
 - **Version Control**: Git & GitHub
 - **Deployment Ready**: Yes (Vercel compatible)
-
+  
 ---
 
 ###  Features
