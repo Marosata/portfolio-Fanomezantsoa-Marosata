@@ -17,6 +17,7 @@ type Project = {
   stack: string[];
   category: Category[];
   year: string;
+  link: string;
 };
 
 const projects: Project[] = [
@@ -25,24 +26,26 @@ const projects: Project[] = [
     title: "Content Creation Platform",
     titleFr: "Plateforme de création de contenu",
     description:
-      "Content creation & publishing platform for digital agencies with reusable UI and SEO‑ready frontend.",
+      "Content creation & publishing platform for digital agencies with reusable UI and SEO-ready frontend.",
     descriptionFr:
       "Plateforme de création et publication de contenu pour agences digitales avec UI réutilisable et frontend optimisé SEO.",
     stack: ["Next.js", "Supabase", "PostgreSQL"],
     category: ["frontend", "backend"],
-    year: "2025–2026"
+    year: "2025–2026",
+    link: "https://www.myxplace.agency/en"
   },
   {
     id: "ecommerce-pools",
-    title: "Pool Equipment E‑commerce",
-    titleFr: "E‑commerce équipements de piscine",
+    title: "Pool Equipment E-commerce",
+    titleFr: "E-commerce équipements de piscine",
     description:
-      "Custom e‑commerce and service booking system for pool equipment, with payment integrations and AWS deployment.",
+      "Custom e-commerce and service booking system for pool equipment, with payment integrations and AWS deployment.",
     descriptionFr:
-      "Plateforme e‑commerce et réservation de services pour équipements de piscine avec paiements intégrés et déploiement AWS.",
+      "Plateforme e-commerce et réservation de services pour équipements de piscine avec paiements intégrés et déploiement AWS.",
     stack: ["Laravel", "MySQL", "Flutter", "AWS"],
     category: ["frontend", "backend", "mobile"],
-    year: "2025"
+    year: "2025",
+    link: "https://drive.google.com/drive/folders/1ZBXVHY2ZMfX2RzHgtlFgBAz82uI9Kfr3?usp=sharing"
   },
   {
     id: "microfinance-app",
@@ -54,31 +57,34 @@ const projects: Project[] = [
       "Application mobile et couche API pour gérer les comptes clients microfinance et améliorer l’expérience utilisateur.",
     stack: ["Flutter", "Laravel", "Golang", "MySQL"],
     category: ["backend", "mobile"],
-    year: "2024–2025"
+    year: "2024–2025",
+    link: "https://drive.google.com/drive/folders/1UtB6kxNnmkqCmkS6kt7_s-9oqJatmiDf?usp=sharing"
   },
   {
     id: "customs-tasks",
-    title: "Customs Office Task Manager",
-    titleFr: "Gestionnaire de tâches pour douanes",
+    title: "Web application for managing Annual Work Plans For General Directorate of Customs",
+    titleFr: "Application Web pour gestion de Plan de Travail Annuel chez Direction Générale des Douanes",
     description:
-      "Internal web tool to track tasks and workflows for a customs office.",
+      "Analysis of business processes and identification of operational problems within the General Directorate of Customs. Design of IT solutions adapted to user needs. Modeling of requirements and technical design using UML diagrams. Object-oriented development in Java in accordance with functional specifications. Development of user interfaces with React to improve the user experience. Design and management of Oracle databases. Functional testing and bug fixing.",
     descriptionFr:
-      "Outil web interne pour suivre les tâches et workflows d’un bureau des douanes.",
+      "Analyse des processus métiers et identification des problématiques opérationnelles au sein de la Direction Générale des Douanes. Conception de solutions informatiques adaptées aux besoins des utilisateurs. Modélisation des besoins et conception technique à l’aide de diagrammes UML. Développement Java et interfaces React. Bases de données Oracle. Tests et correction.",
     stack: ["Laravel", "MySQL"],
     category: ["backend", "frontend"],
-    year: "2024"
+    year: "2024",
+    link: "https://drive.google.com/drive/folders/1PDit-M4C5mIVGBs9T7VMsAu2yOr5rwh7?usp=sharing"
   },
   {
     id: "personal-portfolio",
     title: "Internationalized Personal Portfolio",
     titleFr: "Portfolio personnel internationalisé",
     description:
-      "Modern portfolio with internationalization to showcase full‑stack and mobile projects.",
+      "Modern portfolio with internationalization to showcase full-stack and mobile projects.",
     descriptionFr:
-      "Portfolio moderne avec internationalisation pour présenter les projets full‑stack et mobile.",
+      "Portfolio moderne avec internationalisation pour présenter les projets full-stack et mobile.",
     stack: ["Next.js", "React", "Tailwind CSS"],
     category: ["frontend"],
-    year: "2023–2024"
+    year: "2023–2024",
+    link: "https://www.myxplace.agency/en"
   }
 ];
 
@@ -140,6 +146,14 @@ export function Projects(props: ProjectsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: index * 0.06, duration: 0.5 }}
+            onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
+            role="link"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                window.open(project.link, "_blank", "noopener,noreferrer");
+              }
+            }}
             className="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 p-4 shadow-lg shadow-slate-300/30 backdrop-blur dark:border-white/10 dark:from-white/5 dark:via-black/70 dark:to-black/90 dark:shadow-black/50"
           >
             <div className="fx-card-blob" aria-hidden="true" />
@@ -161,6 +175,9 @@ export function Projects(props: ProjectsProps) {
             </h3>
             <p className="mt-2 font-poppins text-xs text-slate-600 dark:text-gray-400">
               {isEn ? project.description : project.descriptionFr}
+            </p>
+            <p className="mt-3 text-xs text-slate-500 dark:text-gray-500">
+              Click to view project →
             </p>
           </motion.article>
         ))}
