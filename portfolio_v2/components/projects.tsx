@@ -85,6 +85,33 @@ const projects: Project[] = [
     category: ["frontend"],
     year: "2023–2024",
     link: "https://www.myxplace.agency/en"
+  },
+  {
+    id: "t-ikaly",
+    title: "T-Ikaly – AI-powered Recipe App",
+    titleFr: "T-Ikaly – Application de recettes basée sur l'IA",
+    description:
+      "Cross-platform mobile app (.NET MAUI) with an ASP.NET Core backend, suggesting budget-based recipes (traditional or revisited) using the Gemini AI API.",
+    descriptionFr:
+      "Application mobile multiplateforme (.NET MAUI) avec backend ASP.NET Core, proposant des recettes selon le budget (traditionnelles ou revisitées) via l'API IA Gemini.",
+    stack: [".NET MAUI", "ASP.NET Core", "C#", "Entity Framework", "Gemini API"],
+    category: ["backend", "mobile"],
+    year: "2025",
+    link: "https://github.com/Marosata/T-Ikaly.git"
+
+  },
+  {
+    id: "garage-management",
+    title: "Garage Management Web App",
+    titleFr: "Application web de gestion de garage",
+    description:
+      "Full-stack garage management platform (MEAN stack) built with a partner, supporting client, mechanic and manager roles.",
+    descriptionFr:
+      "Plateforme full-stack de gestion de garage (stack MEAN) développée en binôme, avec des rôles client, mécanicien et manager.",
+    stack: ["Angular", "Node.js", "Express.js", "MongoDB"],
+    category: ["frontend", "backend"],
+    year: "2025",
+    link: "https://m1p12mean-fanomezantsoa-manantsoa.vercel.app/Garage"
   }
 ];
 
@@ -127,11 +154,10 @@ export function Projects(props: ProjectsProps) {
               key={filter.value}
               type="button"
               onClick={() => setActive(filter.value)}
-              className={`rounded-full px-3 py-1.5 transition ${
-                active === filter.value
+              className={`rounded-full px-3 py-1.5 transition ${active === filter.value
                   ? "bg-accent-primary text-black"
                   : "text-slate-600 hover:bg-slate-200 dark:text-gray-300 dark:hover:bg-white/5"
-              }`}
+                }`}
             >
               {isEn ? filter.labelEn : filter.labelFr}
             </button>
