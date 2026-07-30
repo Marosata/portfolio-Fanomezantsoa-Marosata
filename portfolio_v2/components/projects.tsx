@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
+import { ProjectCard } from "./projectCard";
 type Lang = "en" | "fr";
 
 type Category = "all" | "frontend" | "backend" | "mobile";
@@ -165,48 +165,14 @@ export function Projects(props: ProjectsProps) {
         </div>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
-        {filtered.map((project, index) => (
-          <motion.article
-            key={project.id}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: index * 0.06, duration: 0.5 }}
-            onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
-            role="link"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                window.open(project.link, "_blank", "noopener,noreferrer");
-              }
-            }}
-            className="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 p-4 shadow-lg shadow-slate-300/30 backdrop-blur dark:border-white/10 dark:from-white/5 dark:via-black/70 dark:to-black/90 dark:shadow-black/50"
-          >
-            <div className="fx-card-blob" aria-hidden="true" />
-            <div className="mb-3 flex items-center justify-between gap-3 font-poppins text-xs text-slate-600 dark:text-gray-400">
-              <span>{project.year}</span>
-              <div className="flex flex-wrap justify-end gap-1">
-                {project.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full bg-slate-200 px-2 py-0.5 font-poppins text-[11px] text-slate-700 dark:bg-white/5 dark:text-gray-200"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <h3 className="font-poppins text-sm font-semibold text-slate-800 dark:text-gray-50">
-              {isEn ? project.title : project.titleFr}
-            </h3>
-            <p className="mt-2 font-poppins text-xs text-slate-600 dark:text-gray-400">
-              {isEn ? project.description : project.descriptionFr}
-            </p>
-            <p className="mt-3 text-xs text-slate-500 dark:text-gray-500">
-              Click to view project →
-            </p>
-          </motion.article>
-        ))}
+      {filtered.map((project, index) => (
+        <ProjectCard
+          key={project.id}
+          project={project}
+          index={index}
+          isEn={isEn}
+        />
+      ))}
       </div>
     </section>
   );
