@@ -117,21 +117,45 @@ export function Hero(props: HeroProps) {
         </div>
         <div className="flex flex-col items-center gap-6 md:items-end">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-            className="relative h-48 w-48 overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-100 to-slate-300 shadow-2xl shadow-slate-400/30 md:h-56 md:w-56 dark:border-white/10 dark:from-white/10 dark:to-black/60 dark:shadow-black/60"
+            initial={{ opacity: 0, scale: 0.85, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: [0.16, 1, 0.3, 1], // smooth "expo out" easing
+            }}
+            className="group relative h-48 w-48 md:h-56 md:w-56"
           >
-            <Image
-              src="/assets/pictures/profile.jpg"
-              alt="Portrait de Marosata Fanomezantsoa"
-              fill
-              priority
-              sizes="224px"
-              className="object-cover"
+            {/* animated glow ring behind the image */}
+            <motion.div
+              className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-slate-400/40 via-transparent to-slate-500/40 blur-xl dark:from-white/20 dark:to-white/5"
+              animate={{ opacity: [0.4, 0.7, 0.4] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-          </motion.div>
-          <div className="grid w-full grid-cols-2 gap-3 font-poppins text-xs text-slate-600 dark:text-gray-300 sm:grid-cols-4">
+
+            {/* floating wrapper */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.04, rotate: 1 }}
+              className="relative h-full w-full overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-100 to-slate-300 shadow-2xl shadow-slate-400/30 transition-shadow duration-500 group-hover:shadow-slate-400/50 dark:border-white/10 dark:from-white/10 dark:to-black/60 dark:shadow-black/60 dark:group-hover:shadow-black/70"
+            >
+              <Image
+                src="/assets/pictures/profile.jpg"
+                alt="Portrait de Marosata Fanomezantsoa"
+                fill
+                priority
+                sizes="224px"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
+
+              {/* subtle shine sweep on hover */}
+              <motion.div
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full"
+                transition={{ duration: 0.9, ease: "easeInOut" }}
+              />
+            </motion.div>
+          </motion.div>          <div className="grid w-full grid-cols-2 gap-3 font-poppins text-xs text-slate-600 dark:text-gray-300 sm:grid-cols-2">
             {stats.map((item, index) => (
               <motion.div
                 key={item.key}
