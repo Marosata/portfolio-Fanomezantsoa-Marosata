@@ -9,6 +9,7 @@ import { Skills } from "@/components/skills";
 import { Contact } from "@/components/contact";
 import { BackgroundMatrix } from "@/components/background-matrix";
 import { useTheme } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next"
 
 type Lang = "en" | "fr";
 
@@ -29,6 +30,7 @@ export default function HomePage() {
 
   return (
     <>
+      <Analytics/>
       {isLoading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
           <div className="h-10 w-10 animate-spin rounded-full border-2 border-accent-primary border-t-transparent" />
