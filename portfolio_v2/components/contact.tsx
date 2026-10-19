@@ -191,7 +191,7 @@ export function Contact(props: ContactProps) {
             </p>
             <div className="mt-3 flex flex-wrap gap-3">
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/marosata-fanomezantsoa-b99122271"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-slate-200 px-3 py-1.5 font-poppins text-xs text-slate-700 transition-colors hover:bg-slate-300 hover:text-slate-900 dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-gray-100"
@@ -200,7 +200,11 @@ export function Contact(props: ContactProps) {
                 <span>LinkedIn</span>
               </a>
               <a
-                href="/CV-Fano-a-jour.pdf"
+                href={
+                  isEn
+                    ? "/assets/pictures/Resume Marosata_Fanomezantsoa.pdf"
+                    : "/assets/pictures/CV%20FanomezantsoaM_d%C3%A9veloppeur_FullStack.pdf"
+                }
                 className="inline-flex items-center gap-2 rounded-full bg-slate-200 px-3 py-1.5 font-poppins text-xs text-slate-700 transition-colors hover:bg-slate-300 hover:text-slate-900 dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-gray-100"
               >
                 <FileDown className="h-4 w-4" />
