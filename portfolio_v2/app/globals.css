@@ -130,6 +130,13 @@ body {
   background: radial-gradient(circle at 30% 20%, #3b82f6, #22c55e);
 }
 
+/* Conteneur d'animation particle text (changement de langue) */
+.particle-text-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
 /* Neutralise l'animation de fondu par défaut de l'API View Transitions
    et évite les conflits de superposition lors du changement de thème */
 ::view-transition-old(root),
