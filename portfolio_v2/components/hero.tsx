@@ -12,7 +12,7 @@ type HeroProps = {
 const stats = [
   {
     key: "experience",
-    value: "1.5+",
+    value: "3+",
     labelEn: "years of experience",
     labelFr: "années d'expérience"
   },

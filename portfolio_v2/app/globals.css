@@ -130,6 +130,14 @@ body {
   background: radial-gradient(circle at 30% 20%, #3b82f6, #22c55e);
 }
 
+/* Neutralise l'animation de fondu par défaut de l'API View Transitions
+   et évite les conflits de superposition lors du changement de thème */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 @keyframes blob-bounce {
   0% {
     transform: translate(-120%, -120%) translate3d(0, 0, 0) scale(1);
