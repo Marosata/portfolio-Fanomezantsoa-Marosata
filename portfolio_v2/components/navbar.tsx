@@ -129,7 +129,7 @@ export function Navbar(props: NavbarProps) {
           </div>
           <button
             type="button"
-            onClick={toggleTheme}
+            onClick={(e) => toggleTheme(e)}
             className="rounded-full border border-slate-300 bg-slate-100 p-1.5 backdrop-blur transition-colors hover:bg-slate-200 dark:border-white/10 dark:bg-black/40 dark:hover:bg-black/60"
             aria-label="Toggle theme"
           >
